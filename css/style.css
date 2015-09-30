@@ -1,0 +1,5 @@
+.form-control.small,
+.input-group .form-control.small {
+	width: 60px;
+	text-align: center;
+}

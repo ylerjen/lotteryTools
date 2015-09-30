@@ -1,0 +1,26 @@
+{
+  "name": "lotteryTools",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ylerjen/lotteryTools",
+  "authors": [
+    "Yann Lerjen <yann.lerjen@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "lottery",
+    "tools"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}
