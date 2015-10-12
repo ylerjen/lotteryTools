@@ -3,7 +3,7 @@
 	<head>
 		<title>Lottery Tools</title>
 		<link type="text/css" rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" />
-		<link type="text/css" rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.-theme.min.css" />
+		<link type="text/css" rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.min.css" />
 		<link type="text/css" rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
@@ -12,32 +12,58 @@
 				<h1>Check numéro</h1>
 				<form id="checkNbrs">
 				<div class="form-group">
-					<input type="date" class="form-control">
+					<label>Date du tirage</label>
+					<input type="date" class="form-control" id="tirageDate">
 				</div>
-				<div class="form-inline">
-					<label>Saisissez vos numéros</label>
-
-					<div class="form-group"></div>
-					<div class="form-group">
-						<input type="number" class="form-control small" name="no1" />-
-						<input type="number" class="form-control small" name="no2" />-
-						<input type="number" class="form-control small" name="no3" />-
-						<input type="number" class="form-control small" name="no4" />-
-						<input type="number" class="form-control small" name="no5" />-
+				<div class="row">
+					<div class="col-xs-12">
+						<label>Saisissez vos numéros</label>
+					</div>
+					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+						<input type="number" class="form-control" name="no_1_1" value="1" min="1" max="50" />
+					</div>
+					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+						<input type="number" class="form-control" name="no_2_1" value="2" min="1" max="50" />
+					</div>
+					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+						<input type="number" class="form-control" name="no_3_1" value="3" min="1" max="50" />
+					</div>
+					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+						<input type="number" class="form-control" name="no_4_1" value="4" min="1" max="50" />
+					</div>
+					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+						<input type="number" class="form-control" name="no_5_1" value="5" min="1" max="50" />
+					</div>
+					<div class="clearfix visible-xs-block"></div>
+					<div class="form-group col-xs-4 col-sm-4 col-lg-2">
 						<div class="input-group">
-							<input type="number" class="form-control small" name="st1" />
-							<span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
-						</div>
-						<div class="input-group">
-							<input type="number" class="form-control small" name="st2" />
+							<input type="number" class="form-control" name="st_1_1" value="2" min="1" max="11" />
 							<span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group col-xs-4 col-sm-4 col-lg-2">
+						<div class="input-group">
+							<input type="number" class="form-control" name="st_2_1" value="8" min="1" max="11" />
+							<span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
+						</div>
+					</div>
+					<div class="form-group col-xs-4 col-sm-4 col-lg-1">
 						<button class="btn btn-primary">Check</button>
 					</div>
 				</div>
 				</form>
+
+			</section>
+			<section id="result" class="hidden">
+				<h1>Result</h1>
+				<section>
+					<h2>Official lottery</h2>
+					<div id="lotteryNb"></div>
+				</section>
+				<section>
+					<h2>My numbers</h2>
+					<div id="myResults"></div>
+				</section>
 			</section>
 		</div>
 		<script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
