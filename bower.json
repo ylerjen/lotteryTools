@@ -21,6 +21,7 @@
     "tests"
   ],
   "devDependencies": {
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "mustache.js": "~2.1.3"
   }
 }
