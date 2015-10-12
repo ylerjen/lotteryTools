@@ -1,0 +1,135 @@
+<ArrayOfDrawResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.lottery.ie/resultsservice">
+    <DrawResult>
+        <DrawName>EuroMillions</DrawName>
+        <DrawDate>2015-09-22T19:30:00+01:00</DrawDate>
+        <DrawNumber>801</DrawNumber>
+        <Message>There was no winner of the EuroMillions jackpot.</Message>
+        <PromoMessage1/>
+        <PromoMessage2/>
+        <TopPrize>37424463</TopPrize>
+        <NextDrawDate>2015-10-02T19:30:00+01:00</NextDrawDate>
+        <Structure>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>0</Winners>
+                <Match>5+2</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>37424463</Prize>
+                <IrishWinners>0</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>3</Winners>
+                <Match>5+1</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>331823</Prize>
+                <IrishWinners>0</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>13</Winners>
+                <Match>5</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>25525</Prize>
+                <IrishWinners>0</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>36</Winners>
+                <Match>4+2</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>4609</Prize>
+                <IrishWinners>3</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>907</Winners>
+                <Match>4+1</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>160</Prize>
+                <IrishWinners>11</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>1830</Winners>
+                <Match>4</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>79</Prize>
+                <IrishWinners>29</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>1875</Winners>
+                <Match>3+2</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>55</Prize>
+                <IrishWinners>22</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>21915</Winners>
+                <Match>2+2</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>22</Prize>
+                <IrishWinners>463</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>36324</Winners>
+                <Match>3+1</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>13</Prize>
+                <IrishWinners>659</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>75026</Winners>
+                <Match>3</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>10</Prize>
+                <IrishWinners>1387</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>111094</Winners>
+                <Match>1+2</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>12</Prize>
+                <IrishWinners>2306</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>488041</Winners>
+                <Match>2+1</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>7</Prize>
+                <IrishWinners>8896</IrishWinners>
+            </Tier>
+            <Tier xsi:type="EuroMillionsTier">
+                <Winners>1004568</Winners>
+                <Match>2</Match>
+                <PrizeType>Cash</PrizeType>
+                <Prize>4</Prize>
+                <IrishWinners>18214</IrishWinners>
+            </Tier>
+        </Structure>
+        <Numbers>
+            <DrawNumber>
+                <Number>14</Number>
+                <Type>Standard</Type>
+            </DrawNumber>
+            <DrawNumber>
+                <Number>23</Number>
+                <Type>Standard</Type>
+            </DrawNumber>
+            <DrawNumber>
+                <Number>26</Number>
+                <Type>Standard</Type>
+            </DrawNumber>
+            <DrawNumber>
+                <Number>27</Number>
+                <Type>Standard</Type>
+            </DrawNumber>
+            <DrawNumber>
+                <Number>29</Number>
+                <Type>Standard</Type>
+            </DrawNumber>
+            <DrawNumber>
+                <Number>7</Number>
+                <Type>LuckyStar</Type>
+            </DrawNumber>
+            <DrawNumber>
+                <Number>10</Number>
+                <Type>LuckyStar</Type>
+            </DrawNumber>
+        </Numbers>
+    </DrawResult>
+</ArrayOfDrawResult>
