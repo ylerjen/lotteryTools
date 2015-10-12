@@ -1,10 +1,8 @@
 (function(window,document,undefined){
     'use strict';
 
-    //ws list : http://resultsservice.lottery.ie/ResultsService.asmx
-
-    var service = "/ResultsService.asmx/GetResultsForDate"; //GET with ?drawType=string&drawDate=string
-    var host = "resultsservice.lottery.ie";
+    var service = "resultsservice.asmx/GetResultsForDate";
+    var host = "http://resultsservice.lottery.ie/";
     var param = {
             drawType : "EuroMillions",
             drawDate : "2015-09-22"
@@ -12,8 +10,16 @@
     var mock = "data/mock.xml";
 
     var ws = host+service;
-    ws = mock;
+    //ws = mock;
     var formSelector = '#checkNbrs';
+
+    function getChoosenDate () {        
+        var $dateField = $('#tirageDate')
+        var choosenDate = $dateField.val();
+        var dateArray = choosenDate.split('/');
+        dateArray.reverse();
+        return dateArray.join('-');
+    }
 
     var displayLotteryNb = function (lotteryNumbers) {
         var $container = $('#lotteryNb');
@@ -54,10 +60,11 @@
 
 
     var getLotteryNbrs = function (callback) {
+        console.info(ws);
         $.ajax({
             url: ws,
-            param: param,
-            context: document.body
+            data: param,
+            type: 'POST'
         }).done(function(xml){
             var numbers = {            
                 nbList : [],
@@ -111,6 +118,7 @@
 
     $(formSelector).on('submit',function (event) {
         event.preventDefault();
+        param.drawDate = getChoosenDate();
         getLotteryNbrs(displayResult);
     });
 
