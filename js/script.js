@@ -13,7 +13,6 @@
     var $gridsContainer = $('#grids');
 
     function notify(type, msg) {
-
         var notify = $('#notify');
         var msgBox = notify.find('.msg');
         if(msg){
@@ -43,13 +42,14 @@
 
     var displayLotteryNb = function (lotteryNumbers) {
         var $container = $('#lotteryNb');
-        var content = '';
+        var content = '<p class="tirage text-center">';
         for(var i=0; i<lotteryNumbers.nbList.length;i++){
             content += '<span class="label label-default">' + lotteryNumbers.nbList[i] + '</span>';
         }
         for(var j= 0; j<lotteryNumbers.stList.length;j++) {
-            content += '<span class="label label-default">' + lotteryNumbers.stList[j] + '</span>';
+            content += '<span class="label label-primary"><i class="glyphicon glyphicon-star"></i> ' + lotteryNumbers.stList[j] + '</span>';
         }
+        content += '</p>';
         $container.html(content);
     }
 
@@ -59,7 +59,7 @@
         var content = '';
         for(var gridName in playedGrids){
             grid = playedGrids[gridName];
-            content += '<p class="text-center">';
+            content += '<p class="tirage text-center">';
             for(var i=0; i<grid.nbList.length;i++){
                 if($.inArray(grid.nbList[i], lotteryNumbers.nbList) >= 0){
                     classnames = 'label label-primary';
@@ -74,7 +74,7 @@
                 } else {
                     classnames = 'label label-default';
                 }
-                content += '<span class="' + classnames + '">' + grid.stList[j] + '</span>';
+                content += '<span class="' + classnames + '"><i class="glyphicon glyphicon-star"></i> ' + grid.stList[j] + '</span>';
             }
             content += '</p>';
         }

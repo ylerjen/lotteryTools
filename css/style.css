@@ -3,3 +3,7 @@
 	width: 60px;
 	text-align: center;
 }
+
+.tirage .label {
+	margin: 0 2px;
+}
