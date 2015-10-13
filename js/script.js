@@ -1,17 +1,37 @@
 (function(window,document,undefined){
     'use strict';
-
+    var gridNb = 0;
     var service = "resultsservice.asmx/GetResultsForDate";
     var host = "http://resultsservice.lottery.ie/";
     var param = {
-            drawType : "EuroMillions",
-            drawDate : "2015-09-22"
-        };
-    var mock = "data/mock.xml";
-
+        drawType : "EuroMillions",
+        drawDate : "2015-09-22"
+    };
     var ws = host+service;
-    //ws = mock;
     var formSelector = '#checkNbrs';
+    var $tpl = $('#tpl-grid');
+    var $gridsContainer = $('#grids');
+
+    function notify(type, msg) {
+
+        var notify = $('#notify');
+        var msgBox = notify.find('.msg');
+        if(msg){
+            notify.show('fast').addClass('alert-' + type);
+            msgBox.html(msg);
+        } else {
+            notify.hide('fast').removeClass('alert-danger alert-info alert-warning alert-success');
+            msgBox.html('');
+        }
+    }
+
+    function addGrid () {
+        var template = $tpl.html();
+        Mustache.parse(template);
+        var data = {idx: ++gridNb};
+        var rendered = Mustache.render(template, data);
+        $gridsContainer.append(rendered);
+    }
 
     function getChoosenDate () {        
         var $dateField = $('#tirageDate')
@@ -33,25 +53,30 @@
         $container.html(content);
     }
 
-    var displayResult = function (playedNumbers, lotteryNumbers, hide) {
+    var displayResult = function (playedGrids, lotteryNumbers, hide) {
         var $result = $('#myResults');
-        var classnames;
+        var classnames,grid;
         var content = '';
-        for(var i=0; i<playedNumbers.nbList.length;i++){
-            if($.inArray(playedNumbers.nbList[i], lotteryNumbers.nbList) >= 0){
-                classnames = 'label label-primary';
-            } else {
-                classnames = 'label label-default';
+        for(var gridName in playedGrids){
+            grid = playedGrids[gridName];
+            content += '<p class="text-center">';
+            for(var i=0; i<grid.nbList.length;i++){
+                if($.inArray(grid.nbList[i], lotteryNumbers.nbList) >= 0){
+                    classnames = 'label label-primary';
+                } else {
+                    classnames = 'label label-default';
+                }
+                content += '<span class="' + classnames + '">' + grid.nbList[i] + '</span>';
             }
-            content += '<span class="' + classnames + '">' + playedNumbers.nbList[i] + '</span>';
-        }
-        for(var j= 0; j<playedNumbers.stList.length;j++) {
-            if($.inArray(playedNumbers.stList[j], lotteryNumbers.stList) >= 0){
-                classnames = 'label label-primary';
-            } else {
-                classnames = 'label label-default';
+            for(var j= 0; j<grid.stList.length;j++) {
+                if($.inArray(grid.stList[j], lotteryNumbers.stList) >= 0){
+                    classnames = 'label label-primary';
+                } else {
+                    classnames = 'label label-default';
+                }
+                content += '<span class="' + classnames + '">' + grid.stList[j] + '</span>';
             }
-            content += '<span class="' + classnames + '">' + playedNumbers.stList[j] + '</span>';
+            content += '</p>';
         }
         $result.html(content);
 
@@ -60,7 +85,6 @@
 
 
     var getLotteryNbrs = function (callback) {
-        console.info(ws);
         $.ajax({
             url: ws,
             data: param,
@@ -72,38 +96,42 @@
             };
 
             var xmlNumbers = $(xml).find('Numbers>DrawNumber');
-            $.each(xmlNumbers, function (i,el) {
-                el = $(el);
-                var typeVal = el.find('Type').text();
-                var numberVal = el.find('Number').text();
+            if(xmlNumbers[0]){
+                $.each(xmlNumbers, function (i,el) {
+                    el = $(el);
+                    var typeVal = el.find('Type').text();
+                    var numberVal = el.find('Number').text();
 
-                if ( typeVal === 'Standard') {
-                    numbers.nbList.push(numberVal);
-                } else {
-                    numbers.stList.push(numberVal);
-                }
-            });
+                    if ( typeVal === 'Standard') {
+                        numbers.nbList.push(numberVal);
+                    } else {
+                        numbers.stList.push(numberVal);
+                    }
+                });
 
-            var playedNumbers = getPlayedNbrs();
-            displayLotteryNb(numbers);
-            callback(playedNumbers,numbers);
+                var playedNumbers = getPlayedNbrs();
+                displayLotteryNb(numbers);
+                callback(playedNumbers,numbers);
+            } else {
+                notify('danger', 'No draw on ' + param.drawDate);
+            }
         });
     };
 
     var getPlayedNbrs = function () {
-        var numbers = {            
-            nbList : [],
-            stList : []
-        };
+        var grids = {};
         var inputs = $(formSelector).find('input[type=number]');
+
         $.each(inputs, function(i,el){
-            if(el.name.indexOf('st')>=0){
-                numbers.stList.push(el.value);
+            var inputEl = el.name.split('_');
+            grids[inputEl[2]] = grids[inputEl[2]] || {nbList : [],stList : []};
+            if(inputEl[0]==='st') {
+                grids[inputEl[2]].stList.push(el.value);
             } else {                
-                numbers.nbList.push(el.value);
+                grids[inputEl[2]].nbList.push(el.value);
             }
         });
-        return numbers;
+        return grids;
     }
 
     var initDate = function () {
@@ -115,11 +143,17 @@
     }
 
     initDate();
+    addGrid();
 
     $(formSelector).on('submit',function (event) {
         event.preventDefault();
+        notify();
         param.drawDate = getChoosenDate();
         getLotteryNbrs(displayResult);
+    });
+
+    $('#addGrid').on('click',function(){
+        addGrid();
     });
 
 })(window, document);

@@ -7,6 +7,42 @@
 		<link type="text/css" rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
+		<script id="tpl-grid" type="x-tmpl-mustache">
+			<fieldset class="row">
+				<legend class="col-xs-12">
+					<label>Grid {{idx}}</label>
+				</legend>
+				<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+					<input type="number" class="form-control" name="no_1_{{idx}}" value="1" min="1" max="50" />
+				</div>
+				<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+					<input type="number" class="form-control" name="no_2_{{idx}}" value="2" min="1" max="50" />
+				</div>
+				<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+					<input type="number" class="form-control" name="no_3_{{idx}}" value="3" min="1" max="50" />
+				</div>
+				<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+					<input type="number" class="form-control" name="no_4_{{idx}}" value="4" min="1" max="50" />
+				</div>
+				<div class="form-group col-xs-4 col-sm-2 col-lg-1">
+					<input type="number" class="form-control" name="no_5_{{idx}}" value="5" min="1" max="50" />
+				</div>
+				<div class="clearfix visible-xs-block"></div>
+				<div class="form-group col-xs-6 col-sm-4 col-lg-2">
+					<div class="input-group">
+						<input type="number" class="form-control" name="st_1_{{idx}}" value="2" min="1" max="11" />
+						<span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
+					</div>
+				</div>
+				<div class="form-group col-xs-6 col-sm-4 col-lg-2">
+					<div class="input-group">
+						<input type="number" class="form-control" name="st_2_{{idx}}" value="8" min="1" max="11" />
+						<span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
+					</div>
+				</div>
+			</fieldset>
+			<hr/>
+		</script>
 		<div class="container">
 			<section class="content">
 				<h1>Check numéro</h1>
@@ -15,58 +51,38 @@
 					<label>Date du tirage</label>
 					<input type="date" class="form-control" id="tirageDate">
 				</div>
+				<div id="grids"></div>
 				<div class="row">
-					<div class="col-xs-12">
-						<label>Saisissez vos numéros</label>
-					</div>
-					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
-						<input type="number" class="form-control" name="no_1_1" value="1" min="1" max="50" />
-					</div>
-					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
-						<input type="number" class="form-control" name="no_2_1" value="2" min="1" max="50" />
-					</div>
-					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
-						<input type="number" class="form-control" name="no_3_1" value="3" min="1" max="50" />
-					</div>
-					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
-						<input type="number" class="form-control" name="no_4_1" value="4" min="1" max="50" />
-					</div>
-					<div class="form-group col-xs-4 col-sm-2 col-lg-1">
-						<input type="number" class="form-control" name="no_5_1" value="5" min="1" max="50" />
-					</div>
-					<div class="clearfix visible-xs-block"></div>
-					<div class="form-group col-xs-4 col-sm-4 col-lg-2">
-						<div class="input-group">
-							<input type="number" class="form-control" name="st_1_1" value="2" min="1" max="11" />
-							<span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
-						</div>
-					</div>
-					<div class="form-group col-xs-4 col-sm-4 col-lg-2">
-						<div class="input-group">
-							<input type="number" class="form-control" name="st_2_1" value="8" min="1" max="11" />
-							<span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
-						</div>
-					</div>
+					<button id="addGrid" class="btn btn-default pull-right" type="button">Add grid <i class="glyphicon glyphicon-plus"></i></button>
+				</div>
+				<div class="row">
 					<div class="form-group col-xs-4 col-sm-4 col-lg-1">
 						<button class="btn btn-primary">Check</button>
 					</div>
 				</div>
 				</form>
-
 			</section>
-			<section id="result" class="hidden">
+			<div id="notify" class="alert alert-info" style="display:none;">
+				<h5 class="msg"></h5>
+			</div>
+			<section id="result" class="row hidden">
 				<h1>Result</h1>
-				<section>
-					<h2>Official lottery</h2>
-					<div id="lotteryNb"></div>
-				</section>
-				<section>
-					<h2>My numbers</h2>
-					<div id="myResults"></div>
-				</section>
+				<div class="col-sm-6">
+					<section class="panel panel-default">
+						<div class="panel-heading"><h2 class="panel-title">Official lottery</h2></div>
+						<div id="lotteryNb" class="panel-body"></div>
+					</section>
+				</div>
+				<div class="col-sm-6">
+					<section class="panel panel-default">
+						<div class="panel-heading"><h2 class="panel-title">My numbers</h2></div>
+						<div id="myResults" class="panel-body"></div>
+					</section>
+				</div>
 			</section>
 		</div>
 		<script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="libs/mustache.js/mustache.min.js"></script>
 		<script type="text/javascript" src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</body>
