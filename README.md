@@ -1,2 +1,2 @@
 # lotteryTools
-A repository with tools to facilitate the check the win of lottery games
+Simple UI to check the possible win of euromillions...
