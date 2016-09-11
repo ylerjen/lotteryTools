@@ -4,7 +4,8 @@
   "description": "A repository with tools to facilitate the check the win of lottery games",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "browser-sync start --server --files 'css/*.css'"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,11 @@
   },
   "homepage": "https://github.com/ylerjen/lotteryTools#readme",
   "devDependencies": {
-    "connect": "^3.4.0",
-    "serve-static": "^1.10.0"
+    "browser-sync": "^2.15.0"
+  },
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "^3.1.0",
+    "mustache": "^2.2.1"
   }
 }
